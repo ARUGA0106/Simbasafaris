@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>SIMBA SAFARI | LOGISTICS</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #007bff; /* Blue color */
+  height: 100vh;
+}
+
+.page-index {
+  padding-top: 80px; /* Adjust as needed */
+}
+
+  </style>
+</head>
+
+<body class="page-index">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="" class="avatar rounded-circle"><h1 class="d-flex align-items-center">SIMBA SAFARI'S</h1>
+      </a>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.php" class="active">Home</a></li>
+          <li><a href="routes.php">Routes</a></li>
+          <li class="nav-item">
+         
+          </li>
+          <li><a href="contact.php">Agent contacts.</a></li>
+          <li><a href="login.php">Login</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <section id="LGC" class="portfolio-mf sect-pt4 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h3 class="title-a">Booking & Ticketing</h3>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form action="booking.php" method="post">
+             <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form action="booking.php" method="post">
+            <div class="form-group">
+              <label for="fullname">Full Name:</label>
+              <input type="text" class="form-control" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="pickup">Pickup Point:</label>
+              <select class="form-control" id="pickup" name="pickup">
+                <option value="Point A">Magufuli Terminal</option>
+                <option value="Point B">Nyegezi</option>
+                <option value="Point C">Msamvu</option>
+                <option value="Point D">Dodoma</option>
+              </select>
+			  
+            </div>
+			 <label for="pickup">Payment method:</label>
+              <select class="form-control" id="pickup" name="pickup">
+                <option value="Point A">M-pesa</option>
+                <option value="Point B">Simbanking</option>
+                <option value="Point C">Airtel Money</option>
+                <option value="Point D">Azam Pesa</option>
+              </select>
+			   <label for="pickup">Seat Class</label>
+              <select class="form-control" id="pickup" name="pickup">
+                <option value="Point A">VIP</option>
+                <option value="Point B">Classic</option>
+                <option value="Point C">Economy</option>
+                <option value="Point D">Others</option>
+              </select>
+			    <label for="pickup">Parcel registry</label>
+              <select class="form-control" id="pickup" name="pickup">
+                <option value="Point A">Hand bag</option>
+                <option value="Point B">Full bag</option>
+                <option value="Point C">Heavy Weight > 30kgs</option>
+                <option value="Point D">None</option>
+				 <option value="Point D">Others</option>
+              </select>
+            <div class="form-group">
+              <label for="time">Preferred Time:</label>
+              <input type="time" class="form-control" id="time" name="time" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+              <label for="address">Address:</label>
+              <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Book Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+         
+
+  <footer id="footer" class="footer">
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright">
+         &copy; <?php echo date('Y'); ?> Copyright  <strong><span>Simba safari's</span></strong>
+        </div>
+        <div class="credits">
+          Designed by <a href="https://www.linkedin.com/in/godwin-aruga">Godwin Aruga.</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
