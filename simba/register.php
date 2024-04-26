@@ -18,14 +18,15 @@ $retype_password = md5($_POST['retype_password']);
   <?php  
 }else if ($PasswordHash == $retype_password){
 
-  $query=mysqli_query($conn,"INSERT INTO `user`(`FullName`, `Email`,`terms`, `PasswordHash`,`Role`, `user_status`) VALUES('$FullName','$Email','$terms','$PasswordHash','$Role','$user_status')");
+  $query=mysqli_query($conn,"INSERT INTO `users`(`full_name`, `Email`, `Password_hash`) VALUES('$FullName','$Email','$PasswordHash')");
   
   if($query){ 
-         ?>
-         <script type="text/javascript">
-             alert("Your successfully Register");
-         </script>
-        <?php  
+      
+    echo '<script type="text/javascript">';
+    echo 'alert("You have successfully registered! Welcome to our site. Enjoy our unlimited customer experience.");';
+    echo 'window.location.href = "index.php";'; // Redirect to the index page
+    echo '</script>';
+        
       }  
       else{
         ?>  

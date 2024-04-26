@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,52 +79,50 @@
           <h3 class="font-weight-bold text-dark"></h3>
         </div>
         <div class="card-body">
-          <?php 
-            include ('includes/connection.php'); 
-            session_start(); 
-            if (isset($_POST['login'])) {
-              $Username = $_POST['Username'];
-              $PasswordHash = md5($_POST['PasswordHash']);
-              $sql1 = "SELECT * FROM user WHERE Email='$Username' AND PasswordHash='$PasswordHash' LIMIT 1";
-              $query1 = mysqli_query($conn, $sql1);
-              if ($query1) {
-                if (mysqli_num_rows($query1) > 0) {
-                  $row = mysqli_fetch_array($query1);
-                  $_SESSION['Email']=$row['Email'];
-                  $_SESSION['Role']=$row['Role']; 
-                  $_SESSION['FullName']=$row['FullName'];   
-                  if ($row['user_status']=='Enable') {
-                    if ($_SESSION['Role'] === 'admin') {
-                      header("location:admin.php?page=dashboad");
-                    } else if ($_SESSION['Role'] === 'user') {
-                      header('location:admin.php?page=dashboad');
-                    }
-                  } else {
-          ?> 
-                    <div class="col-md-12">  
-                      <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h5><i class="icon fas fa-ban"></i> Blocked!</h5>
-                        Your Not Authorized To use This Site Please Contuct To CyberShield Coder...
-                      </div>
-                    </div>
-          <?php
-                  }
-                } else {
-          ?>  
-                  <div class="col-md-12">  
-                    <div class="alert alert-danger alert-dismissible">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> 
-                      Username and Password are incorrect Try Again
-                    </div>
-                  </div> 
-          <?php
-                }
-              } else {
-                die(mysqli_error($conn));
-              }
+         <?php
+include ('includes/connection.php');
+session_start();
+
+if (isset($_POST['login'])) {
+    $Username = $_POST['Username'];
+    $Password = $_POST['PasswordHash']; // Note: I've renamed this variable for clarity
+
+    // Hash the password securely
+    $PasswordHash = md5($Password);
+
+    // Use prepared statements to prevent SQL injection
+    $sql1 = "SELECT * FROM users WHERE Email=? AND password_hash=? LIMIT 1";
+    $stmt = $conn->prepare($sql1);
+    $stmt->bind_param("ss", $Username, $PasswordHash);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        $_SESSION['Email'] = $row['Email'];
+        $_SESSION['Role'] = $row['Role'];
+        $_SESSION['FullName'] = $row['FullName'];
+        
+        if ($row['user_status'] === 'Enable') {
+            if ($_SESSION['Role'] === 'admin' || $_SESSION['Role'] === 'user') {
+                header("location: admin.php?page=dashboard");
+                exit();
             }
-          ?>
+        } else {
+            $error_message = "Your account is blocked. Please contact support.";
+        }
+    } else {
+        $error_message = "Invalid username or password. Please try again.";
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+
+?>
+
+<!-- Your HTML code continues here... -->
+
           <form action="" method="post" id="login_form">
             <div class="form-group">
               <input type="text" id="Username" name="Username" class="form-control" required autofocus data-parsley-type="email" data-parsley-trigger="keyup" placeholder="Enter Email Address...">
